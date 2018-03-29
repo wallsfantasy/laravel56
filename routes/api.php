@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/cats', function (Request $request) {
+    return \App\Cat::create(['name' => $request->request->get('name')]);
+});
+
+Route::get('/cats', function (Request $request) {
+    return \App\Cat::all();
+});
